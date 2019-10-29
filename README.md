@@ -8,3 +8,6 @@
 ![](./dbconfig.png)
 
 ![](./fofa.png)
+
+## Fortify 代码审计 检测出-弱加密算法
+![](./Fortify.jpg)
