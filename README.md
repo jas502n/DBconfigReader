@@ -47,6 +47,7 @@
 ```
 
 ## 文件读取漏洞 org.springframework.web.servlet.ResourceServlet
+![](./fileread.png)
 
 https://docs.spring.io/spring/docs/3.0.x/javadoc-api/org/springframework/web/servlet/ResourceServlet.html
 
